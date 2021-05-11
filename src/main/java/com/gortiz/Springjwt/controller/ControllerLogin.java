@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-
+import com.gortiz.Springjwt.dto.Salida;
 import com.gortiz.Springjwt.dto.JwtDto;
 import com.gortiz.Springjwt.dto.LoginUsuario;
 import com.gortiz.Springjwt.dto.NuevoUsuario;
@@ -29,7 +29,6 @@ import com.gortiz.Springjwt.enume.RolNomb;
 import com.gortiz.Springjwt.jwt.JwtProvider;
 import com.gortiz.Springjwt.service.RolService;
 import com.gortiz.Springjwt.service.UsuarioService;
-import com.tutorial.crud.dto.Mensaje;
 
 import org.springframework.http.HttpStatus;
 
@@ -57,13 +56,13 @@ public class ControllerLogin {
 	@PostMapping("/nuevoUsuario")
 	public ResponseEntity<?> nuevoUsuario(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return new ResponseEntity<>(new Mensaje("Campos mal o email invalido"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new Salida("Campos mal o email invalido"), HttpStatus.BAD_REQUEST);
 		}
 		if (usuarioService.existsByUsuario(nuevoUsuario.getNombreUsuario())) {
-			return new ResponseEntity<>(new Mensaje("Ese nombre ya existe"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new Salida("El nombre ya existe"), HttpStatus.BAD_REQUEST);
 		}
 		if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
-			return new ResponseEntity<>(new Mensaje("Ese email ya existe"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new Salida("El email ya existe"), HttpStatus.BAD_REQUEST);
 		}
 
 		Usuario usuario = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
@@ -77,13 +76,13 @@ public class ControllerLogin {
 
 		usuarioService.save(usuario);
 
-		return new ResponseEntity<>(new Mensaje("Usuario creado"), HttpStatus.CREATED);
+		return new ResponseEntity<>(new com.gortiz.Springjwt.dto.Salida("Usuario creado"), HttpStatus.CREATED);
 	}
 
 	@PostMapping("/login")
 	public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult) {
 		if(bindingResult.hasErrors())
-            return new ResponseEntity(new Mensaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Salida("campos mal puestos"), HttpStatus.BAD_REQUEST);
         Authentication authentication =
                 authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
