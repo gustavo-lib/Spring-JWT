@@ -8,20 +8,19 @@ import com.gortiz.Springjwt.entity.Rol;
 import com.gortiz.Springjwt.enume.RolNomb;
 import com.gortiz.Springjwt.service.RolService;
 
-@Component
+//@Component
 public class CreateRoles implements CommandLineRunner {
 
-    @Autowired
+  @Autowired
     RolService rolService;
 	
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
+	 /* 	// TODO Auto-generated method stub
 		Rol rolAdmin = new Rol(RolNomb.ROLE_ADMIN);
         Rol rolUser = new Rol(RolNomb.ROLE_USER);
         rolService.save(rolAdmin);
-        rolService.save(rolUser);
-		
+        rolService.save(rolUser);*/
 	}
 
 }
