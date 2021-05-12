@@ -16,14 +16,12 @@ public class JwtEntryPoint implements AuthenticationEntryPoint {
 
 	private final static Logger logger = LoggerFactory.getLogger(JwtEntryPoint.class);
 
-  
-
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			org.springframework.security.core.AuthenticationException authException)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		logger.error("Fallo el metodo ");
+		logger.error("Fallo el metodo commence");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No esta autorizado");
 	}
 }
