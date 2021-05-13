@@ -17,5 +17,6 @@
 
 METHOD | PATH | DESCRIPTION 
 ------------|-----|------------
-POST |http://localhost:8080/auth/login | user login
-POST |http://localhost:8080/auth/nuevo | new user
+POST |http://localhost:8080/auth/login | user login body usuarioNombre-password
+POST |http://localhost:8080/auth/nuevo | new user   body nombre-nombreUsuario-email-password-rol
+
