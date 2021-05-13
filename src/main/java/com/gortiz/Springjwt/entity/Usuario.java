@@ -19,11 +19,9 @@ import javax.validation.constraints.NotNull;
 public class Usuario {
 
 	
-	@Id
-    //Id Auto Increment
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idUsuario;
-	
     @NotNull
     private String nombre;
     @NotNull
@@ -39,12 +37,11 @@ public class Usuario {
     @ManyToMany
     @JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_usuario"),
     inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<Rol> roles = new HashSet <>();
+    private Set<Rol> roles = new HashSet<>();
 
     public Usuario() {
     }
 
-    //Constuctor sin Id ni Roles
     public Usuario(@NotNull String nombre, 
                    @NotNull String nombreUsuario, 
                    @NotNull String email, 

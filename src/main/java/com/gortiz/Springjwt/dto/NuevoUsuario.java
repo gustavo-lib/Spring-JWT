@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 
 public class NuevoUsuario {
 
-	@NotBlank
+    @NotBlank
     private String nombre;
     @NotBlank
     private String nombreUsuario;
@@ -16,6 +16,8 @@ public class NuevoUsuario {
     private String email;
     @NotBlank
     private String password;
+    //Por defecto crea un usuario normal
+    //Si quiero un usuario Admin debo pasar este campo roles
     private Set<String> roles = new HashSet<>();
 
     public String getNombre() {
@@ -57,4 +59,10 @@ public class NuevoUsuario {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
+
+	@Override
+	public String toString() {
+		return "NuevoUsuario [nombre=" + nombre + ", nombreUsuario=" + nombreUsuario + ", email=" + email
+				+ ", password=" + password + ", roles=" + roles + "]";
+	}
 }

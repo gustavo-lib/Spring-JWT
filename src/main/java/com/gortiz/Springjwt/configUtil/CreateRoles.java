@@ -16,11 +16,11 @@ public class CreateRoles implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-	 /* 	// TODO Auto-generated method stub
-		Rol rolAdmin = new Rol(RolNomb.ROLE_ADMIN);
+	// TODO Auto-generated method stub
+		/*Rol rolAdmin = new Rol(RolNomb.ROLE_ADMIN);
         Rol rolUser = new Rol(RolNomb.ROLE_USER);
         rolService.save(rolAdmin);
-        rolService.save(rolUser);*/
+        rolService.save(rolUser);  	*/
 	}
 
 }

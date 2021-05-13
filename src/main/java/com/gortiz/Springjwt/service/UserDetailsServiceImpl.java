@@ -1,5 +1,7 @@
 package com.gortiz.Springjwt.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,6 +12,7 @@ import com.gortiz.Springjwt.entity.Usuario;
 import com.gortiz.Springjwt.entity.UsuarioMain;
 
 @Service
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired

@@ -1,20 +1,23 @@
 package com.gortiz.Springjwt.jwt;
+
+
+import com.gortiz.Springjwt.entity.UsuarioMain;
 import io.jsonwebtoken.*;
-
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
-
 import org.springframework.stereotype.Component;
 
-import com.gortiz.Springjwt.entity.UsuarioMain;
+import java.util.Date;
 
+/**
+ * Clase que genera el token y valida que este bien formado y no este expirado
+ */
 @Component
 public class JwtProvider {
-	private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
+
+   private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
     //Valores que tenemos en el aplicattion.properties
     @Value("${jwt.secret}")
@@ -24,9 +27,9 @@ public class JwtProvider {
     private int expiration;
 
     /**
-     *setIssuedAt --> Asigna fecha de creción del token
-     *setExpiration --> Asigna fehca de expiración
-     * signWith --> Firma
+     *setIssuedAt --> asigna fecha de creción del token
+     *setExpiration --> asigna fecha de expiración
+     * signWith --> firma
      */
     public String generateToken(Authentication authentication){
         UsuarioMain usuarioMain = (UsuarioMain) authentication.getPrincipal();
@@ -59,5 +62,4 @@ public class JwtProvider {
         }
         return false;
     }
-
 }

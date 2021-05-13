@@ -10,12 +10,12 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Rol {
+	
 	@Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private int id;
 
     @NotNull
-    //Se indica que va a ser un Enum de tipo String
     @Enumerated(EnumType.STRING)
     private RolNomb rolNombre;
 
@@ -41,5 +41,4 @@ public class Rol {
     public void setRolNombre(RolNomb rolNombre) {
         this.rolNombre = rolNombre;
     }
-
 }
