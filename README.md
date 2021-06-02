@@ -1,7 +1,7 @@
 # Spring Security JWT DB
 
 ## Requisitos
-- JDK 8 
+- Java 8 
 - Maven 3.0
 - Eclipse 
 - Spring Boot
